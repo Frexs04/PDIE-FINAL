@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #868d07;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #868d07;
+            height: 100%;
+            width: 100%;
+        }
+
+        .form_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EDDCD9;
+            height: 420px;
+            width: 400px;
+            border: 2px solid #264143;
+            border-radius: 20px;
+            box-shadow: 3px 4px 0px 1px black;
+        }
+
+        .title {
+            color: #264143;
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .sub_title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .form_group {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            margin: 10px;
+        }
+
+        .form_style {
+            outline: none;
+            border: 2px solid #264143;
+            box-shadow: 3px 4px 0px 1px black;
+            width: 290px;
+            padding: 12px 10px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .form_style:focus, .btn:focus {
+            transform: translateY(4px);
+            box-shadow: 1px 2px 0px 0px black;
+        }
+
+        .btn {
+            padding: 15px;
+            margin: 10px 0px; /* Adjusted margin for better spacing */
+            width: 290px;
+            font-size: 15px;
+            background: #868d07;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px 0px black;
+            color: white; /* Button font color */
+            text-decoration: none; /* Remove underline from links */
+            display: inline-block; /* Make the button size consistent */
+            text-align: center; /* Center the button text */
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .link {
+            font-weight: 800;
+            color: #264143;
+            padding: 5px;
+        }
+
+        h1 {
+            color: white; /* Changed to white */
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: 1px solid white; /* Changed to white */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><b>STAFF</b></h1>
+        <hr>
+        <br>
+        <br>
+        <div class="form_area">
+            <a class="btn" href="{% url 'ViewDutiesShift' staff.Staffid %}">View Duty Shift</a>
+            <a class="btn" href="{% url 'ViewResident' staff.Staffid %}">View Resident</a>
+            <a class="btn" href="{% url 'ViewVisitor' staff.Staffid %}">View visitor</a>
+            <a class="btn" href="{% url 'ApplyPassStaff' staff.Staffid %}">Register visitor</a>
+        </div>
+    </div>
+</body>
+</html>

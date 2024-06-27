@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #868d07;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #868d07;
+            height: 100%;
+            width: 100%;
+        }
+
+        .form_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EDDCD9;
+            height: 420px;
+            width: 400px;
+            border: 2px solid #264143;
+            border-radius: 20px;
+            box-shadow: 3px 4px 0px 1px black;
+        }
+
+        .title {
+            color: #264143;
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .sub_title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .form_group {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            margin: 10px;
+        }
+
+        .form_style {
+            outline: none;
+            border: 2px solid #264143;
+            box-shadow: 3px 4px 0px 1px black;
+            width: 290px;
+            padding: 12px 10px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .form_style:focus, .btn:focus {
+            transform: translateY(4px);
+            box-shadow: 1px 2px 0px 0px black;
+        }
+
+        .btn {
+            padding: 15px;
+            margin: 25px 0px;
+            width: 290px;
+            font-size: 15px;
+            background: #868d07;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px 0px black;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .link {
+            font-weight: 800;
+            color: #264143;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form_area">
+            <p class="title">Login</p>
+            <form method="post" action="{% url 'Residentlogin' %}">
+                {% csrf_token %}
+                <div class="form_group">
+                    <label class="sub_title" for="Resid">Resident ID</label>
+                    <input type="text" placeholder="Enter Resident ID" class="form_style" name="Resid" id="Resid">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="ResPassword">Password</label>
+                    <input type="password" placeholder="Password" class="form_style" name="ResPassword" id="ResPassword">
+                </div>
+                <div>
+                    <button type="submit" class="btn">Login</button>
+                </div>
+                <a class="link" href="{% url 'Choosepage' %}">Back</a>
+            </form>
+            {% if error_message %}
+                    {{ error_message }}
+                {% endif %}
+        </div>
+    </div>
+</body>
+</html>

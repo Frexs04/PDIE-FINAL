@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Resident</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e4d9c3;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 40%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #219ebc;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #219ebc;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>View Resident</h1>
+    <table>
+        <tr>
+            <th>Resident ID</th>    
+            <th>Resident Name</th>
+            <th>Resident Email</th>
+            <th>Resident Phone Number</th>
+        </tr>
+        {% for data in alldata %}
+            <tr>
+                <td>{{ data.Resid }}</td>
+                <td>{{ data.Resname }}</td>
+                <td>{{ data.Resemail }}</td>
+                <td>{{ data.Resphonenumber }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="btn-container">
+        <a href="{% url 'StaffPage' staff.Staffid %}" class="btn">Back</a>
+    </div>
+</body>
+</html>

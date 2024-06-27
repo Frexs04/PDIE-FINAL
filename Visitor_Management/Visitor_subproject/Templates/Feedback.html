@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+</head>
+<style>
+  body {
+    background-image: url(https://images.pexels.com/photos/1817050/pexels-photo-1817050.jpeg?cs=srgb&dl=pexels-darwis-alwan-1817050.jpg&fm=jpg&_gl=1*1kpo2ws*_ga*MjA1OTQzODI2LjE2OTgyNTE0ODU.*_ga_8JE65Q40S6*MTY5ODY0MDQ5OS42LjEuMTY5ODY0MzUxMy4wLjAuMA..);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+  #h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  #h4 {
+    margin: 20px 0 2px;
+    color: #000;
+  }
+  
+  .testbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 80px;
+  }
+
+  
+  .input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    vertical-align: middle;
+    background-color: #F7F7F7;
+  }
+  
+  .input:hover, textarea:hover {
+    outline: none;
+    border: 1px solid #000;
+  }
+  
+  .first-name {
+    margin-bottom: 5px;
+  }
+  
+  th, td {
+    width: 21%;
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    vertical-align: set;
+    line-height: 18px;
+    font-weight: 400;
+    word-break: break-all;
+  }
+  
+  .first-col {
+    width: 16%;
+    text-align: left;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  textarea {
+    width: calc(100% - 6px);
+    background: #F7F7F7;
+    border-radius: 5px;
+  }
+  
+  .btn-block {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  button {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #F3D153;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: .9;
+  }
+  
+  @media (min-width: 568px) {
+    th, td {
+      word-break: keep-all;
+    }
+  }
+  
+  .container {
+    background-color: #fff;
+    width: 400px;
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+  margin-bottom: 20px;
+  width: 370px;
+}
+
+</style>
+<body>
+  <body>
+    <div class="container">
+      <form action="" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="fname">Enter Your Name:</label>
+            <input type="text" name="fname" placeholder="Enter Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Enter Email :</label>
+            <input type="text" name="email" placeholder="Enter Enter Email">
+          </div>
+          <div class="form-group">
+            <label for="impression">Impression :</label>
+            <select name="impression" id="impression">
+                <option value="Satisfied" >Satisfied</option>
+                <option value="very Satisfied" >very Satisfied</option>
+                <option value="unsatisfied" >unsatisfied</option>
+                <option value="very unsatisfied" >very unsatisfied</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comments">Comment </label>
+          <input type="text" name="comments" placeholder="Place Your Comment Here">
+          </div>
+          <div class="form-group"></div>
+            <button type="submit">Submit</button>
+        
+          <br><br>
+          <a href="{% url 'secondpage' %}" class="link">Main Menu</a><br>
+          <a href="{% url 'viewfeedback' %}" class="link">Save</a>
+      </form>
+      </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Event</title>
+    <style>
+        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #868d07;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Ensures the navbar and content stack vertically */
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 0 10px;
+            margin: 0; /* Ensure there is no margin */
+        }
+
+        .navbar .logo img {
+            height: 60px; 
+        }
+
+        .navbar .nav-items {
+            display: flex;
+            list-style-type: none;
+            margin-left: auto;
+            padding: 0;
+        }
+
+        .navbar .nav-items li {
+            float: left;
+        }
+
+        .navbar .nav-items li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar .nav-items li a:hover {
+            background-color: #111;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #868d07;
+            height: 100%; /* Adjusted height for the container */
+            width: 100%;
+        }
+
+        .form_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EDDCD9;
+            width: 500px;
+            border: 2px solid #264143;
+            border-radius: 20px;
+            box-shadow: 3px 4px 0px 1px black;
+            padding: 20px;
+        }
+
+        .title {
+            color: #264143;
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .form_group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .form_style {
+            outline: none;
+            border: 2px solid #264143;
+            box-shadow: 3px 4px 0px 1px black;
+            width: 100%;
+            padding: 12px 10px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .form_style:focus, .btn:focus {
+            transform: translateY(4px);
+            box-shadow: 1px 2px 0px 0px black;
+        }
+
+        .btn {
+            padding: 15px;
+            margin: 25px 0;
+            width: 100%;
+            font-size: 15px;
+            background: #868d07;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px 0px black;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .link-button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .link-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            width: 100%;
+        }
+
+        .link {
+            font-weight: 800;
+            color: #264143;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            {% load static %} <img src="{% static 'Logo.png' %}" alt="Logo">
+        </div>
+        <ul class="nav-items">
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#rules">Rules & Regulations</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+            <li><a href="#contactus">Contact Us</a></li>
+            <li><a href="#login">Login</a></li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="form_area">
+            <p class="title">Apply Event</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form_group">
+                    <label for="ResNumberHouse" class="sub_title">Resident House Number:</label>
+                    <input type="text" name="ResNumberHouse" placeholder="Enter Your House Number" class="form_style">
+                </div>
+                <div class="form_group">
+                    <label for="ResidentName" class="sub_title">Resident Name:</label>
+                    <select name="ResidentName" id="ResidentName" class="form_style">
+                        {% for resident in residents %}
+                            <option value="{{ resident.Resid }}">{{ resident.Resname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form_group">
+                    <label for="ResidentPurpose" class="sub_title">Purpose:</label>
+                    <input type="text" name="ResidentPurpose" placeholder="Enter Purpose" class="form_style">
+                </div>
+                <div class="form_group">
+                    <label for="ResidentStart" class="sub_title">Time Start:</label>
+                    <input type="text" name="ResidentStart" placeholder="Enter Start Time" class="form_style">
+                </div>
+                <div class="form_group">
+                    <label for="ResidentEnd" class="sub_title">Time End:</label>
+                    <input type="text" name="ResidentEnd" placeholder="Enter End Time" class="form_style">
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="btn">Submit</button>
+                    <br>
+                    <a class="link" href="{% url 'ResidentPage' Resid %}">Main Menu</a>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</body>
+</html>

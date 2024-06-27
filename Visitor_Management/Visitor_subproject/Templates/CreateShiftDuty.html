@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Shift Duty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #868d07;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 0 10px;
+        }
+
+        .navbar .logo img {
+            height: 60px;
+        }
+
+        .navbar .nav-items {
+            display: flex;
+            list-style-type: none;
+            margin-left: auto;
+            padding: 0;
+        }
+
+        .navbar .nav-items li {
+            float: left;
+        }
+
+        .navbar .nav-items li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar .nav-items li a:hover {
+            background-color: #111;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            background-color: #868d07;
+            width: 100%;
+        }
+
+        .form_area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #EDDCD9;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border: 2px solid #264143;
+            border-radius: 20px;
+            box-shadow: 3px 4px 0px 1px black;
+        }
+
+        .title {
+            color: #264143;
+            font-weight: 900;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .form_group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .form_style {
+            outline: none;
+            border: 2px solid #264143;
+            box-shadow: 3px 4px 0px 1px black;
+            width: 100%;
+            padding: 12px 10px;
+            border-radius: 4px;
+            font-size: 15px;
+        }
+
+        .form_style:focus, .btn:focus {
+            transform: translateY(4px);
+            box-shadow: 1px 2px 0px 0px black;
+        }
+
+        .btn {
+            padding: 15px;
+            margin-top: 25px;
+            width: 100%;
+            font-size: 15px;
+            background: #868d07;
+            border-radius: 10px;
+            font-weight: 800;
+            box-shadow: 3px 3px 0px 0px black;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: .9;
+        }
+
+        .link {
+            font-weight: 800;
+            color: #264143;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <<div class="container">
+        <div class="form_area">
+            <p class="title">Create Shift Duty</p>
+            <form method="post">
+                {% csrf_token %}
+                {% if error_message %}
+                    <p>{{ error_message }}</p>
+                {% endif %}
+                <div class="form_group">
+                    <label for="StaffID">Staff Name:</label>
+                    <select id="StaffID" name="StaffID" class="form_style">
+                        {% for staff in staff_list %}
+                            <option value="{{ staff.Staffid }}">{{ staff.Staffname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form_group">
+                    <label for="Assignto">Assign to:</label>
+                    <input type="text" id="Assignto" name="Assignto" placeholder="Assign To" class="form_style" required>
+                </div>
+                <div class="form_group">
+                    <label for="Duedate">Due Date:</label>
+                    <input type="date" id="Duedate" name="Duedate" class="form_style" required>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <a class="link" href="{% url 'ManageShiftDuty' manager.Managerid %}">View Shift Duties</a>
+            <a class="link" href="{% url 'ManagerPage' manager.Managerid %}">Main Menu</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Contact Us</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Email: contact@tamanyapayaemas.com</p>
+    </div>
+</body>
+</html>
